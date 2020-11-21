@@ -199,9 +199,10 @@ Plug 'ncm2/ncm2-bufword'                  " Completion – Words from current bu
 Plug 'ncm2/ncm2-path'                     " Completion – Path
 Plug 'pbogut/ncm2-alchemist'              " Completion – Elixir
 Plug 'ncm2/ncm2-jedi'                     " Completion – Python
+Plug 'psf/black'                          " Formatter – Python
+Plug 'mhinz/vim-mix-format'               " Formatter – Elixir
+Plug 'nvie/vim-flake8'                    " Linter – Python
 Plug 'majutsushi/tagbar'                  " Overview of code structure for files
-Plug 'psf/black'                          " Code formatter for Python
-Plug 'nvie/vim-flake8'                    " Python linter
 call plug#end()
 
 " 3.1. File tree (nerdtree)
@@ -248,8 +249,11 @@ autocmd FileType python map <Leader>l :call flake8#Flake8()<CR>
 
 " 3.8. Formatters
 
-" Python files (black):
+" Python (black):
 autocmd FileType python map <Leader>f :Black<CR>
+
+" Elixir (mix format):
+autocmd FileType elixir map <Leader>f :MixFormat<CR>
 
 "" 3.9. Fuzzy Finders
 
