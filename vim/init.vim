@@ -152,7 +152,7 @@ cab W w
 
 colorscheme OceanicNext
 
-let g:airline_theme='oceanicnext'
+let g:airline_theme = 'oceanicnext'
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 
@@ -203,16 +203,17 @@ Plug 'psf/black'                          " Formatter – Python
 Plug 'mhinz/vim-mix-format'               " Formatter – Elixir
 Plug 'nvie/vim-flake8'                    " Linter – Python
 Plug 'majutsushi/tagbar'                  " Overview of code structure for files
+Plug 'tiagopog/gropen.vim'                " Open local files and directories on remote git repositories
 call plug#end()
 
 " 3.1. File tree (nerdtree)
-let g:nerdtree_tabs_open_on_console_startup=1
-let g:nerdtree_tabs_smart_startup_focus=1
+let g:nerdtree_tabs_open_on_console_startup = 1
+let g:nerdtree_tabs_smart_startup_focus = 1
 let NERDTreeIgnore = ['\.pyc$']
 map <C-n> :NERDTreeToggle<CR>
 
 " vim-airline
-let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#enabled = 1
 
 " 3.2. Control of changes on files (gundo.vim)
 nnoremap <F5> :GundoToggle<CR>
@@ -241,7 +242,7 @@ nnoremap <silent> <Leader>b :TagbarToggle<CR>
 " 3.7. Linters
 
 " Python files (flake8):
-let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_checkers = ['flake8']
 autocmd FileType python map <Leader>l :call flake8#Flake8()<CR>
 
 " If you want to run the linter every time you save a Python file:
@@ -250,10 +251,20 @@ autocmd FileType python map <Leader>l :call flake8#Flake8()<CR>
 " 3.8. Formatters
 
 " Python (black):
+" Dependency: pip install black
 autocmd FileType python map <Leader>f :Black<CR>
 
 " Elixir (mix format):
 autocmd FileType elixir map <Leader>f :MixFormat<CR>
+
+" SQL (sqlparse):
+" Dependency: pip install sqlparse
+function! SqlFormatter()
+    set noai " skip no auto indentation
+    :%!sqlformat --reindent --keywords upper --identifiers lower -<CR>
+endfunction
+
+autocmd FileType sql map <Leader>f call SqlFormatter()
 
 "" 3.9. Fuzzy Finders
 
@@ -268,3 +279,4 @@ endif
 " then .agignore at the user or project level should be edited. Otherwise
 " uncomment the following line and add the direcories to be ignored:
 " let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+"
