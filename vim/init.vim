@@ -261,10 +261,10 @@ autocmd FileType elixir map <Leader>f :MixFormat<CR>
 " Dependency: pip install sqlparse
 function! SqlFormatter()
     set noai " skip no auto indentation
-    :%!sqlformat --reindent --keywords upper --identifiers lower -<CR>
+    :%!sqlformat --reindent --keywords upper --identifiers lower -
 endfunction
 
-autocmd FileType sql map <Leader>f call SqlFormatter()
+autocmd FileType sql map <Leader>f call SqlFormatter()<CR>
 
 "" 3.9. Fuzzy Finders
 
