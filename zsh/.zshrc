@@ -2,13 +2,8 @@
 # Executes commands at the start of an interactive session.
 #
 # Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Tiago Guedes <tiagopog@gmail.com>
 #
-
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
 
 # Customize to your needs...
 
@@ -85,3 +80,8 @@ if [ -f '/Users/tiagopog/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tiagop
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/tiagopog/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tiagopog/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
