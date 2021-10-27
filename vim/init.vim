@@ -26,6 +26,11 @@ set splitbelow " open horizontal split below the current one
 set cul " highlight the cursor line
 set shell=/bin/bash " load shell
 
+"" Point out the location of Python binaries
+let g:python_host_prog = "/Users/tiagoguedes/.pyenv/shims/python"
+let g:python3_host_prog = "/Users/tiagoguedes/.pyenv/shims/python"
+let g:python2_host_prog = "/usr/local/bin/python2"
+
 "" Main key
 let mapleader=","
 
@@ -35,7 +40,6 @@ set incsearch " Search as you type
 set smartcase " Use smartcase, when search query starts with Uppercase, turn off case insensitive search
 
 "" Clipboard
-
 set clipboard+=unnamedplus
 
 "" Copy to clipboard
@@ -226,7 +230,7 @@ nnoremap <leader>a :Ag
 
 " 3.5. Completion (NCM2)
 
-" Enable ncm2 for all buffers
+" Enable ncm2 for all buffers:
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 
