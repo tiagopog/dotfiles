@@ -53,6 +53,9 @@ alias gcf="gcloud alpha functions"
 alias rubocop-diff="git status | awk '/modified/ {print }' | xargs rubocop"
 alias docker-exec-web="docker exec -it $(docker ps | awk '/web/ {print $1}') bash"
 alias vim="nvim"
+alias iex="docker run --rm -it -v $(pwd):/home -w /home elixir:latest iex"
+alias elixir="docker run --rm -it -v $(pwd):/home -w /home elixir:latest elixir"
+alias ctags="/usr/local/Cellar/ctags/5.8_2/bin/ctags"
 
 function docker-exec {
   name=${1}
@@ -74,12 +77,6 @@ export EVENT_NOKQUEUE=1
 
 # Make sure gcloud works regardless the binary path of python2 defined by pyenv
 export CLOUDSDK_PYTHON=/usr/local/bin/python2
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/tiagopog/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tiagopog/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/tiagopog/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tiagopog/google-cloud-sdk/completion.zsh.inc'; fi
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
