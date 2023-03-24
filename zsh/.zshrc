@@ -82,3 +82,8 @@ export CLOUDSDK_PYTHON=/usr/local/bin/python2
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
+
+# Atuin replaces existing shell history with a SQLite database and records additional context for commands.
+# To import current history from zsh run: $ atuin import zsh
+# Source: https://github.com/ellie/atuin
+eval "$(atuin init zsh)"
