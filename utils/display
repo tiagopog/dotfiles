@@ -1,0 +1,40 @@
+#!/bin/bash
+
+##
+# Shell script to periodically display results from a CLI in a terminal.
+#
+# Options:
+#
+# -s: how many seconds until it runs the given command again
+#
+# Examples:
+#
+# Show process statuses in Heroku every 10 seconds:
+#
+# $ display -s10 "heroku ps -a tymber-ecommerce-qa"
+#
+##
+
+set -e
+
+while getopts "s:" opt; do
+  case ${opt} in
+    s) period_in_seconds=${OPTARG} ;;
+  esac
+done
+
+period_in_seconds=${period_in_seconds:-10}
+
+while true; do
+  command=${2}
+  control_sequence="\033[0K\r"
+
+  output=$(${command})
+  output+=${control_sequence}
+
+  clear
+  echo -ne "${output}"
+
+  echo -e "\n---\nRefresh period: ${period_in_seconds} seconds"
+  sleep ${period_in_seconds};
+done
