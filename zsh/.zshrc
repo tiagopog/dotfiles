@@ -5,8 +5,6 @@
 #   Tiago Guedes <tiagopog@gmail.com>
 #
 
-# Customize to your needs...
-
 plugins=(git colored-man colorize brew zsh-syntax-highlighting)
 
 # Set name of the theme to load.
@@ -53,8 +51,8 @@ alias gcf="gcloud alpha functions"
 alias rubocop-diff="git status | awk '/modified/ {print }' | xargs rubocop"
 alias docker-exec-web="docker exec -it $(docker ps | awk '/web/ {print $1}') bash"
 alias vim="nvim"
-alias iex="docker run --rm -it -v $(pwd):/home -w /home elixir:latest iex"
-alias elixir="docker run --rm -it -v $(pwd):/home -w /home elixir:latest elixir"
+# alias iex="docker run --rm -it -v $(pwd):/home -w /home elixir:latest iex"
+# alias elixir="docker run --rm -it -v $(pwd):/home -w /home elixir:latest elixir"
 alias ctags="/usr/local/Cellar/ctags/5.8_2/bin/ctags"
 
 function docker-exec {
@@ -83,7 +81,11 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Atuin replaces existing shell history with a SQLite database and records additional context for commands.
-# To import current history from zsh run: $ atuin import zsh
-# Source: https://github.com/ellie/atuin
-eval "$(atuin init zsh)"
+
+# Homebrew completion
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+# asdf - Tool version manager.
+# * Install: https://asdf-vm.com/guide/getting-started.html#core-installation-complete
+# * Elixir plugin: asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
+. "/usr/local/opt/asdf/libexec/asdf.sh"
