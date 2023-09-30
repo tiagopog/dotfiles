@@ -198,16 +198,18 @@ Plug 'jparise/vim-graphql'                " Syntax highlighting for GraphQL
 Plug 'leafgarland/typescript-vim'         " Syntax highlighting for TypeScript
 Plug 'tmux-plugins/vim-tmux-focus-events' " Used for automatically refreshing code in the editor
 Plug 'roxma/nvim-yarp'                    " Python framework ease writing Vim plugins
-Plug 'ncm2/ncm2'                          " Async completion framework for Neovim
-Plug 'ncm2/ncm2-bufword'                  " Completion – Words from current buffer
-Plug 'ncm2/ncm2-path'                     " Completion – Path
-Plug 'pbogut/ncm2-alchemist'              " Completion – Elixir
-Plug 'ncm2/ncm2-jedi'                     " Completion – Python
+" Plug 'ncm2/ncm2'                          " Async completion framework for Neovim
+" Plug 'ncm2/ncm2-bufword'                  " Completion – Words from current buffer
+" Plug 'ncm2/ncm2-path'                     " Completion – Path
+" Plug 'pbogut/ncm2-alchemist'              " Completion – Elixir
+" Plug 'ncm2/ncm2-jedi'                     " Completion – Python
 Plug 'psf/black'                          " Formatter – Python
 Plug 'mhinz/vim-mix-format'               " Formatter – Elixir
 Plug 'nvie/vim-flake8'                    " Linter – Python
 Plug 'majutsushi/tagbar'                  " Overview of code structure for files
 Plug 'tiagopog/gropen.vim'                " Open local files and directories on remote git repositories
+Plug 'dense-analysis/ale'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " 3.1. File tree (nerdtree)
@@ -226,19 +228,19 @@ nnoremap <F5> :GundoToggle<CR>
 map <C-c> :TComment<CR>
 
 " 3.4. Search (ag.vim)
-nnoremap <leader>a :Ag 
+nnoremap <leader>a :Ag
 
 " 3.5. Completion (NCM2)
 
 " Enable ncm2 for all buffers:
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+" set completeopt=noinsert,menuone,noselect
 
 " Suppress the annoying 'match x of y', 'The only match' and 'Pattern not found' messages
-set shortmess+=c
+" set shortmess+=c
 
 " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-inoremap <c-c> <ESC>
+" inoremap <c-c> <ESC>
 
 " 3.6. CTags
 nnoremap <silent> <Leader>b :TagbarToggle<CR>
@@ -283,4 +285,28 @@ endif
 " then .agignore at the user or project level should be edited. Otherwise
 " uncomment the following line and add the direcories to be ignored:
 " let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
-"
+
+"" 3.10. LSP (Language Server Protocol)
+
+"" 3.10.1. ElixirLS
+""
+"" References:
+""
+"" - https://www.mitchellhanberg.com/post/2018/10/18/how-to-use-elixir-ls-with-vim/
+"" - https://github.com/dense-analysis/ale
+
+" Required, tell ALE where to find Elixir LS
+let g:ale_elixir_elixir_ls_release = expand("/opt/homebrew/Cellar/elixir-ls/0.16.0/libexec/")
+
+let g:ale_linters = {}
+let g:ale_linters.elixir = ['credo', 'elixir-ls']
+
+" Uncomment below line to disable Dialyzer checks:
+" let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
+
+" Optional, configure as-you-type completions
+set completeopt=menu,menuone,preview,noselect,noinsert
+let g:ale_completion_enabled = 1
+
+autocmd FileType elixir,eelixir nnoremap <C-]> :ALEGoToDefinition<CR>
+autocmd FileType elixir,eelixir nnoremap <C-\> :ALEFindReferences<CR>
