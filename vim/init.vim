@@ -288,12 +288,13 @@ endif
 
 "" 3.10. LSP (Language Server Protocol)
 
-"" 3.10.1. ElixirLS
-""
-"" References:
-""
-"" - https://www.mitchellhanberg.com/post/2018/10/18/how-to-use-elixir-ls-with-vim/
-"" - https://github.com/dense-analysis/ale
+" 3.10.1. ElixirLS
+"
+" References:
+"
+" - https://github.com/dense-analysis/ale
+" - https://www.mitchellhanberg.com/post/2018/10/18/how-to-use-elixir-ls-with-vim/
+" - https://dmerej.info/blog/post/lets-have-a-pint-of-vim-ale/
 
 " Required, tell ALE where to find Elixir LS
 let g:ale_elixir_elixir_ls_release = expand("/opt/homebrew/Cellar/elixir-ls/0.16.0/libexec/")
@@ -310,3 +311,8 @@ let g:ale_completion_enabled = 1
 
 autocmd FileType elixir,eelixir nnoremap <C-]> :ALEGoToDefinition<CR>
 autocmd FileType elixir,eelixir nnoremap <C-\> :ALEFindReferences<CR>
+autocmd FileType elixir,eelixir nnoremap <Leader>d :ALEDetail<CR>
+
+" Navigate the quickfix list
+nnoremap <Leader>l :lnext<CR>
+nnoremap <Leader>p :lprevious<CR>
