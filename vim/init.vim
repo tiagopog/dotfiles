@@ -300,6 +300,7 @@ autocmd FileType elixir,eelixir nnoremap <Leader>d :ALEDetail<CR>
 " Navigate the quickfix list
 nnoremap <Leader>l :lnext<CR>
 nnoremap <Leader>p :lprevious<CR>
+nnoremap <Leader>e :lrewind<CR>
 
 ""
 "" 3.8. Formatters
