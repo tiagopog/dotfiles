@@ -198,21 +198,18 @@ Plug 'jparise/vim-graphql'                " Syntax highlighting for GraphQL
 Plug 'leafgarland/typescript-vim'         " Syntax highlighting for TypeScript
 Plug 'tmux-plugins/vim-tmux-focus-events' " Used for automatically refreshing code in the editor
 Plug 'roxma/nvim-yarp'                    " Python framework ease writing Vim plugins
-" Plug 'ncm2/ncm2'                          " Async completion framework for Neovim
-" Plug 'ncm2/ncm2-bufword'                  " Completion – Words from current buffer
-" Plug 'ncm2/ncm2-path'                     " Completion – Path
-" Plug 'pbogut/ncm2-alchemist'              " Completion – Elixir
-" Plug 'ncm2/ncm2-jedi'                     " Completion – Python
 Plug 'psf/black'                          " Formatter – Python
 Plug 'mhinz/vim-mix-format'               " Formatter – Elixir
 Plug 'nvie/vim-flake8'                    " Linter – Python
 Plug 'majutsushi/tagbar'                  " Overview of code structure for files
 Plug 'tiagopog/gropen.vim'                " Open local files and directories on remote git repositories
 Plug 'dense-analysis/ale'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
-" 3.1. File tree (nerdtree)
+""
+"" 3.1. File tree (nerdtree)
+""
+
 let g:nerdtree_tabs_open_on_console_startup = 1
 let g:nerdtree_tabs_smart_startup_focus = 1
 let NERDTreeIgnore = ['\.pyc$']
@@ -221,16 +218,27 @@ map <C-n> :NERDTreeToggle<CR>
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
 
-" 3.2. Control of changes on files (gundo.vim)
+""
+"" 3.2. Control of changes on files (gundo.vim)
+""
+
 nnoremap <F5> :GundoToggle<CR>
 
-" 3.3. Comments (tcomment_vim)
+""
+"" 3.3. Comments (tcomment_vim)
+""
+
 map <C-c> :TComment<CR>
 
-" 3.4. Search (ag.vim)
+""
+"" 3.4. Search (ag.vim)
+""
+
 nnoremap <leader>a :Ag
 
-" 3.5. Completion (NCM2)
+""
+"" 3.5. Completion (NCM2)
+""
 
 " Enable ncm2 for all buffers:
 " autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -242,10 +250,15 @@ nnoremap <leader>a :Ag
 " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
 " inoremap <c-c> <ESC>
 
-" 3.6. CTags
+""
+"" 3.6. CTags
+""
+
 nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
-" 3.7. Linters
+""
+"" 3.7.1. Linters - Regular Linters
+""
 
 " Python files (flake8):
 let g:syntastic_python_checkers = ['flake8']
@@ -254,41 +267,12 @@ autocmd FileType python map <Leader>l :call flake8#Flake8()<CR>
 " If you want to run the linter every time you save a Python file:
 " autocmd BufWritePost *.py call flake8#Flake8()
 
-" 3.8. Formatters
+""
+"" 3.7.2. Linters - Language Server Protocol (LSP)
+""
 
-" Python (black):
-" Dependency: pip install black
-autocmd FileType python map <Leader>f :Black<CR>
-
-" Elixir (mix format):
-autocmd FileType elixir map <Leader>f :MixFormat<CR>
-
-" SQL (sqlparse):
-" Dependency: pip install sqlparse
-function! SqlFormatter()
-    set noai " skip no auto indentation
-    :%!sqlformat --reindent --keywords upper --identifiers lower -
-endfunction
-
-autocmd FileType sql map <Leader>f call SqlFormatter()<CR>
-
-"" 3.9. Fuzzy Finders
-
-" 3.9.1. ctrlp:
-
-" Use ctrlp with ag because it's so damn fast:
-if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-endif
-
-" NOTE: if any file|directory needs to be ignored by ctrlp and it's using ag
-" then .agignore at the user or project level should be edited. Otherwise
-" uncomment the following line and add the direcories to be ignored:
-" let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
-
-"" 3.10. LSP (Language Server Protocol)
-
-" 3.10.1. ElixirLS
+""
+" ElixirLS
 "
 " References:
 "
@@ -316,3 +300,41 @@ autocmd FileType elixir,eelixir nnoremap <Leader>d :ALEDetail<CR>
 " Navigate the quickfix list
 nnoremap <Leader>l :lnext<CR>
 nnoremap <Leader>p :lprevious<CR>
+
+""
+"" 3.8. Formatters
+""
+
+" Python (black):
+" Dependency: pip install black
+autocmd FileType python map <Leader>f :Black<CR>
+
+" Elixir (mix format):
+autocmd FileType elixir map <Leader>f :MixFormat<CR>
+
+" SQL (sqlparse):
+" Dependency: pip install sqlparse
+function! SqlFormatter()
+    set noai " skip no auto indentation
+    :%!sqlformat --reindent --keywords upper --identifiers lower -
+endfunction
+
+autocmd FileType sql map <Leader>f call SqlFormatter()<CR>
+
+""
+"" 3.9. Fuzzy Finders
+""
+
+""
+" ctrlp:
+"
+" NOTE: use ctrlp with ag because it's so damn fast!
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+endif
+
+" NOTE: if any file|directory needs to be ignored by ctrlp and it's using ag
+" then .agignore at the user or project level should be edited. Otherwise
+" uncomment the following line and add the direcories to be ignored:
+" let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+
