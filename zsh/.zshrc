@@ -35,7 +35,7 @@ unsetopt auto_name_dirs
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=30
 
-export PATH=/Users/tiagopog/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$GOPATH/bin:/usr/local/opt/bison/bin:/usr/local/opt/llvm@6/bin:/Users/tiagopog/Dev/ruby/mruby/bin
+export PATH=/Users/tiagoguedes/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$GOPATH/bin:/usr/local/opt/bison/bin:/usr/local/opt/llvm@6/bin:/Users/tiagoguedes/Dev/ruby/mruby/bin
 export GOPATH=$HOME/Dev/go
 
 if command -v pyenv 1>/dev/null 2>&1; then
@@ -109,6 +109,9 @@ export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 
 # Homebrew completion
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+# Elixir's Mix Scripts
+export PATH="/Users/tiagoguedes/.mix/escripts:$PATH"
 
 # Homebrew config
 eval "$(/opt/homebrew/bin/brew shellenv)"
