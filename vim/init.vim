@@ -271,8 +271,17 @@ autocmd FileType python map <Leader>l :call flake8#Flake8()<CR>
 "" 3.7.2. Linters - Language Server Protocol (LSP)
 ""
 
+" General configuration
+set completeopt=menu,menuone,preview,noselect,noinsert
+
+" Ale (Asynchronous Lint Engine) general configuration
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+let g:ale_linters = {}
+let g:ale_fixers = {}
+
 ""
-" Elixir LSP (ElixirLS)
+" Elixir - ElixirLS
 "
 " References:
 "
@@ -283,15 +292,10 @@ autocmd FileType python map <Leader>l :call flake8#Flake8()<CR>
 " Required, tell ALE where to find Elixir LS
 let g:ale_elixir_elixir_ls_release = expand("/opt/homebrew/Cellar/elixir-ls/0.16.0/libexec/")
 
-let g:ale_linters = {}
 let g:ale_linters.elixir = ['credo', 'elixir-ls']
 
 " Uncomment below line to disable Dialyzer checks:
 " let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
-
-" Optional, configure as-you-type completions
-set completeopt=menu,menuone,preview,noselect,noinsert
-let g:ale_completion_enabled = 1
 
 " Check details
 autocmd FileType elixir,eelixir nnoremap <C-]> :ALEGoToDefinition<CR>
@@ -301,6 +305,28 @@ autocmd FileType elixir,eelixir nnoremap <Leader>ed :ALEDetail<CR>
 " Navigate the quickfix list
 autocmd FileType elixir,eelixir nnoremap <Leader>ee :ALENext<CR>
 autocmd FileType elixir,eelixir nnoremap <Leader>ew :ALEPrevious<CR>
+
+""
+" JavaScript/TypeScript - tsserver
+"
+" References:
+"
+" - https://blog.ffff.lt/posts/typescript-and-ale/
+
+let g:ale_linters.typescript = ['eslint', 'tsserver']
+let g:ale_linters.javascript = ['eslint']
+
+let g:ale_fixers.typescript = ['prettier', 'eslint']
+let g:ale_fixers.javascript = ['prettier', 'eslint']
+
+" Check details
+autocmd FileType javascript,typescript,typescriptreact nnoremap <C-]> :ALEGoToDefinition<CR>
+autocmd FileType javascript,typescript,typescriptreact nnoremap <C-\> :ALEFindReferences<CR>
+autocmd FileType javascript,typescript,typescriptreact nnoremap <Leader>ed :ALEDetail<CR>
+
+" Navigate the quickfix list
+autocmd FileType javascript,typescript,typescriptreact nnoremap <Leader>ee :ALENext<CR>
+autocmd FileType javascript,typescript,typescriptreact nnoremap <Leader>ew :ALEPrevious<CR>
 
 ""
 "" 3.8. Formatters
