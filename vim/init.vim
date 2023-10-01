@@ -272,7 +272,7 @@ autocmd FileType python map <Leader>l :call flake8#Flake8()<CR>
 ""
 
 ""
-" ElixirLS
+" Elixir LSP (ElixirLS)
 "
 " References:
 "
@@ -293,14 +293,14 @@ let g:ale_linters.elixir = ['credo', 'elixir-ls']
 set completeopt=menu,menuone,preview,noselect,noinsert
 let g:ale_completion_enabled = 1
 
+" Check details
 autocmd FileType elixir,eelixir nnoremap <C-]> :ALEGoToDefinition<CR>
 autocmd FileType elixir,eelixir nnoremap <C-\> :ALEFindReferences<CR>
-autocmd FileType elixir,eelixir nnoremap <Leader>d :ALEDetail<CR>
+autocmd FileType elixir,eelixir nnoremap <Leader>ed :ALEDetail<CR>
 
 " Navigate the quickfix list
-nnoremap <Leader>l :lnext<CR>
-nnoremap <Leader>p :lprevious<CR>
-nnoremap <Leader>e :lrewind<CR>
+autocmd FileType elixir,eelixir nnoremap <Leader>ee :ALENext<CR>
+autocmd FileType elixir,eelixir nnoremap <Leader>ew :ALEPrevious<CR>
 
 ""
 "" 3.8. Formatters
