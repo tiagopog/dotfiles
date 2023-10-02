@@ -203,7 +203,8 @@ Plug 'mhinz/vim-mix-format'               " Formatter – Elixir
 Plug 'nvie/vim-flake8'                    " Linter – Python
 Plug 'majutsushi/tagbar'                  " Overview of code structure for files
 Plug 'tiagopog/gropen.vim'                " Open local files and directories on remote git repositories
-Plug 'dense-analysis/ale'
+Plug 'dense-analysis/ale'                 " Asynchronous lint engine for Vim (used here with LSP)
+Plug 'vim-test/vim-test'                  " A Vim wrapper for running tests
 call plug#end()
 
 ""
@@ -363,5 +364,28 @@ endif
 " NOTE: if any file|directory needs to be ignored by ctrlp and it's using ag
 " then .agignore at the user or project level should be edited. Otherwise
 " uncomment the following line and add the direcories to be ignored:
-" let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+" let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|.jest)|(\.(swp|ico|git|svn))$'
 
+""
+"" 3.10. Test Suites
+""
+
+""
+" vim-test
+" More: https://github.com/vim-test/vim-test#setup
+
+" Keybidings for running tests
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+
+" Test runners
+let g:test#python#runner = 'pytest'
+let g:test#ruby#runner = 'rspec'
+let g:test#elixir#runner = 'exunit'
+let g:test#javascript#jest#executable = "yarn test"
+let g:test#javascript#runner = 'jest'
+
+" Additional config
+let g:test#strategy = 'neovim'
+let g:test#neovim#start_normal = 1
+let g:test#basic#start_normal = 1
