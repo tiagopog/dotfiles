@@ -1,4 +1,8 @@
 node_modules
 bower_components
 git
-**/.jest
+.jest
+dist
+_build
+deps
+tags
