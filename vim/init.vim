@@ -196,6 +196,7 @@ Plug 'elixir-lang/vim-elixir'             " Syntax highlighting for Elixir
 Plug 'rhysd/vim-crystal'                  " Syntax highlighting for Crystal
 Plug 'jparise/vim-graphql'                " Syntax highlighting for GraphQL
 Plug 'leafgarland/typescript-vim'         " Syntax highlighting for TypeScript
+Plug 'prisma/vim-prisma'                  " Syntax highlighting for Prisma Schemas
 Plug 'tmux-plugins/vim-tmux-focus-events' " Used for automatically refreshing code in the editor
 Plug 'roxma/nvim-yarp'                    " Python framework ease writing Vim plugins
 Plug 'psf/black'                          " Formatter – Python
@@ -348,6 +349,9 @@ function! SqlFormatter()
 endfunction
 
 autocmd FileType sql map <Leader>f call SqlFormatter()<CR>
+
+" Prisma:
+autocmd FileType prisma map <Leader>f :!npx prisma format<CR>
 
 ""
 "" 3.9. Fuzzy Finders
