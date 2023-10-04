@@ -214,8 +214,11 @@ call plug#end()
 
 let g:nerdtree_tabs_open_on_console_startup = 1
 let g:nerdtree_tabs_smart_startup_focus = 1
+
 let NERDTreeIgnore = ['\.pyc$']
+
 map <C-n> :NERDTreeToggle<CR>
+map <C-N> :NERDTreeFind<CR>
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
