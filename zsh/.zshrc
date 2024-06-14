@@ -115,3 +115,6 @@ export PATH="/Users/tiagoguedes/.mix/escripts:$PATH"
 
 # Homebrew config
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Source files that may be needed for tools I use at work
+source ~/Dev/load_work_related_files.sh 2> /dev/null
