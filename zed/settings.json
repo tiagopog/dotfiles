@@ -10,7 +10,16 @@
   "vim_mode": true,
   "theme": "Atelier Lakeside Dark",
   "ui_font_size": 16,
+  "ui_font_features": {
+    "calt": false,
+    "liga": false
+  },
+  "buffer_font_family": "Zed Mono",
   "buffer_font_size": 16,
+  "buffer_font_features": {
+    "calt": false,
+    "liga": false
+  },
   "languages": {
     "JavaScript": {
       "formatter": {
@@ -30,7 +39,7 @@
         "external": {
           "command": "eslint_d",
           "arguments": [
-            "--stdin",
+            --stdin",
             "--stdin-filename",
             "{buffer_path}",
             "--fix-to-stdout"
@@ -54,3 +63,4 @@
     }
   }
 }
+
