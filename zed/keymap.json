@@ -1,0 +1,25 @@
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-\\": "pane::SplitRight",
+      ", v": "pane::SplitRight",
+      ", h": "pane::SplitDown",
+
+      "ctrl-h ": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"]
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-a": ["terminal::SendText", "\u0001"],
+      "ctrl-e": ["terminal::SendText", "\u0005"],
+      "alt-b": ["terminal::SendText", "\u001bb"],
+      "alt-f": ["terminal::SendText", "\u001bf"]
+    }
+  }
+]
+
