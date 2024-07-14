@@ -1,0 +1,8 @@
+[
+  {
+    "label": "jest test \"$ZED_SYMBOL\"",
+    "command": "npx jest -c 'src/jest.config.js' -t",
+    "args": ["\"$ZED_SYMBOL\" $ZED_FILE"],
+    "tags": ["ts-test", "js-test"]
+  }
+]
