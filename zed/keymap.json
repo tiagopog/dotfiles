@@ -5,6 +5,7 @@
       "cmd-\\": "pane::SplitRight",
       ", v": "pane::SplitRight",
       ", h": "pane::SplitDown",
+      ", q": "pane::CloseActiveItem",
 
       "ctrl-h ": ["workspace::ActivatePaneInDirection", "Left"],
       "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
@@ -22,4 +23,3 @@
     }
   }
 ]
-
