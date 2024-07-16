@@ -14,7 +14,6 @@
     "calt": false,
     "liga": false
   },
-  "buffer_font_family": "Zed Mono",
   "buffer_font_size": 14,
   "buffer_font_features": {
     "calt": false,
@@ -37,7 +36,7 @@
         "external": {
           "command": "eslint_d",
           "arguments": [
-           "--stdin",
+            "--stdin",
             "--stdin-filename",
             "{buffer_path}",
             "--fix-to-stdout"
