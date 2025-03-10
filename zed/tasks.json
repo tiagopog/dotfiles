@@ -4,5 +4,11 @@
     "command": "npx jest -c 'src/jest.config.js' -t",
     "args": ["\"$ZED_SYMBOL\" $ZED_FILE"],
     "tags": ["ts-test", "js-test"]
+  },
+  {
+    "label": "docker: jest test \"$ZED_SYMBOL\"",
+    "command": "local/docker-jest.sh",
+    "args": ["\"$ZED_SYMBOL\" $ZED_FILE"],
+    "tags": ["ts-test", "js-test"]
   }
 ]
