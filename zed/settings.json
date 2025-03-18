@@ -7,6 +7,13 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "features": {
+    "edit_prediction_provider": "none", // zed
+    "inline_completion_provider": "none" // copilot, supermaven or none
+  },
+  "auto_update_extensions": {
+    "prisma": true
+  },
   "vim_mode": true,
   "theme": "Atelier Lakeside Dark",
   "ui_font_size": 14,
@@ -20,6 +27,15 @@
     "liga": false
   },
   "languages": {
+    "Shell Script": {
+      "indent_guides": {
+        "enabled": true,
+        "line_width": 2,
+        "active_line_width": 2,
+        "coloring": "fixed",
+        "background_coloring": "disabled"
+      }
+    },
     "Elixir": {
       "format_on_save": {
         "external": {
